@@ -1,6 +1,6 @@
-﻿<# Multi-function admin tool. Programik do szybszej pracy w codziennych zadaniach SD.
-Skrypt napisany przez: Kmita Dawid - Biuro Wsparcia Użytkownika. Skrypt wymaga psexec i RCV (Endpoint Remote Control Viewer) na hoście gdzie ma być uruchomiony.
-Wymagany jest także dostęp do Cisco ISE. #>
+﻿<# Multi-function admin tool. A program for faster work in daily SD tasks.
+Script written by: Dawid Kmita - User Support Office. The script requires psexec and RCV (Endpoint Remote Control Viewer) on the host where it is to be run.
+Access to Cisco ISE is also required. Dave K. #>
 
 Add-Type -AssemblyName System.Windows.Forms
 
@@ -75,7 +75,7 @@ Function Test-ConnectionToComputer {
 
 Function Start-RCV {
     param (
-        [string]$Path = "C:\Program Files (x86)\Microsoft Endpoint Manager\AdminConsole\bin\i386\CmRcViewer.exe"
+        [string]$Path = "PATH_TO_SCCM_RCV"
     )
 
     if (Test-Path $Path) {
@@ -86,24 +86,9 @@ Function Start-RCV {
     }
 }
 
-<# Funkcja uruchamiająca PSEXEC (na razie martwa - w przyszłości zamierzam rozbudować) 
-
-function Start-CmdAndPsexec {
-    param (
-        [string]$psexecPath,
-        [string]$remoteComputer,
-        [string]$commandToExecute
-    )
-
-    # Uruchom cmd.exe
-    Start-Process "cmd.exe" -ArgumentList "/c psexec.exe \\$remoteComputer $commandToExecute" -Wait
-} 
-#>
-
-# Funkcja uruchamiająca Cisco ISE z przeglądarki (WYMAGANE NADANIE GRUPY W AD DOSTĘPOWEJ)
 
 Function Start-ISE {
-Start-Process "https://isepan1001.cn.in.pekao.com.pl/admin/#administration/administration_identitymanagement/administration_identitymanagement_groups"
+Start-Process "URL_PATH_TO_CISCO_ISE"
 }
 
 

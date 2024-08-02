@@ -1,3 +1,4 @@
+# Barcode generator :) 
 import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
@@ -22,11 +23,11 @@ def on_generate():
         messagebox.showwarning("Błąd", "Proszę wprowadzić dane!")
 
 
-# Inicjalizacja głównego okna
+# main windows
 root = tk.Tk()
 root.title("Generator Kodów Kreskowych")
 
-# Tworzenie i ustawianie widżetów
+# widgets
 entry_label = tk.Label(root, text="Wprowadź tekst lub liczby do zamiany na kod kreskowy:")
 entry_label.pack(pady=10)
 
@@ -39,7 +40,7 @@ generate_button.pack(pady=20)
 label = tk.Label(root)
 label.pack(pady=20)
 
-# Uruchomienie głównej pętli aplikacji
+# main app loop
 root.mainloop()
 
 

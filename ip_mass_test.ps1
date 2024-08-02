@@ -1,6 +1,8 @@
+# Importing modules
 ﻿Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName PresentationFramework
 
+# Main program function
 function Test-ConnectionHosts {
     param (
         [string]$filePath,
@@ -32,7 +34,7 @@ function Test-ConnectionHosts {
     $results
 }
 
-# Tworzenie GUI
+# Create GUI
 [void][System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 [void][System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 

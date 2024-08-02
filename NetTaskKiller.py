@@ -1,3 +1,6 @@
+# Remote killing the exe process or another device with tkinter library and WMI - Dave K.
+
+
 import tkinter as tk
 from tkinter import messagebox
 import wmi

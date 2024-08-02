@@ -1,12 +1,12 @@
-﻿<#Dodawanie wielu grup dla wielu użytkowników. - Kmita Dawid
-Do wykonania skryptu polecam użyć show_user_group z racji distingueshed group names dla lepszego odnajdywania
-Skrypt zaczytuje wpierw txt z nazwami użytkowników a potem txt z nazwami grup
-Póki co skrypt działa tylko w domenie CN#>
+﻿<# Adding multiple groups for multiple users. - Dave K. 
+To execute the script, I recommend using show_user_group due to distinguished group names for better identification.
+The script first reads a txt file with user names and then a txt file with group names.
+#>
 
-# Import modułu Active Directory, jeśli jeszcze nie został załadowany
+# Import Active Directory Module
 Import-Module ActiveDirectory
 
-# Funkcja do wyboru pliku tekstowego z nazwami grup
+# Text file input function
 function Select-File($title) {
     Add-Type -AssemblyName System.Windows.Forms
     $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
@@ -23,14 +23,14 @@ function Select-File($title) {
     }
 }
 
-# Wybór pliku z użytkownikami
+# File with users
 $userFilePath = Select-File "Select a text file with user names"
 if ($userFilePath -eq $null) {
     Write-Host "No user file selected, script terminated." -ForegroundColor Yellow
     exit
 }
 
-# Wybór pliku z grupami
+# File with groups
 $groupFilePath = Select-File "Select a text file with group names"
 if ($groupFilePath -eq $null) {
     Write-Host "No group file selected, script terminated." -ForegroundColor Yellow
@@ -38,24 +38,22 @@ if ($groupFilePath -eq $null) {
 }
 
 try {
-    # Wczytywanie nazw użytkowników z pliku
     $userNames = Get-Content -Path $userFilePath
-    # Wczytywanie nazw grup z pliku
     $groupNames = Get-Content -Path $groupFilePath
 
     foreach ($username in $userNames) {
         foreach ($groupname in $groupNames) {
             try {
-                # Sprawdzanie, czy grupa istnieje
+                # Checking that group exists
                 $group = Get-ADGroup -Identity $groupname -ErrorAction Stop
                 Write-Host "Group found: $($group.Name)" -ForegroundColor Green
                 Write-Host "DistinguishedName: $($group.DistinguishedName)" -ForegroundColor Green
 
-                # Dodawanie użytkownika do grupy
+                # Adding user to group
                 Add-ADGroupMember -Identity $groupname -Members $username -ErrorAction Stop
                 Write-Host "User '$username' added to group '$groupname'" -ForegroundColor Green
             } catch {
-                Write-Host "Error for group '$groupname': $_" -ForegroundColor Red
+                Write-Host "Error for group '$groupname': $_" -ForegroundColor Red 
             }
         }
     }

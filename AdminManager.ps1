@@ -4,7 +4,7 @@ Access to Cisco ISE is also required. Dave K. #>
 
 Add-Type -AssemblyName System.Windows.Forms
 
-# Definicja funkcji Close-Outlook przed utworzeniem formularza
+# definition of closing outlook before creating formula
 Function Close-Outlook {
     param (
         [string]$ComputerName
@@ -25,7 +25,7 @@ Function Close-Outlook {
 }
 
 
-# Definicja funkcji Open-Explorer przed utworzeniem formularza
+# definition open explorer before creating formula
 
 Function Open-Explorer {
     param (
@@ -38,7 +38,7 @@ Function Open-Explorer {
 }
 
 
-# Definicja funkcji Restart-Machine przed utworzeniem formularza
+# definition restart machine before creating formula
 Function Restart-Machine {
     param (
         [string]$ComputerName
@@ -53,7 +53,7 @@ Function Restart-Machine {
     }
 }
 
-# Funkcja testująca połączenie z komputerem
+# test connection before executing 
 Function Test-ConnectionToComputer {
     param (
         [string]$ComputerName
@@ -71,7 +71,7 @@ Function Test-ConnectionToComputer {
         return "Wystąpił błąd podczas testowania połączenia z komputerem"
     }
 }
-# Funkcja uruchamiająca RCV (WYMAGANY CmRcViewer.exe)
+# function that launch RCV (SCCM Remote Control Viewer - CmRcViewer.exe REQUIRED)
 
 Function Start-RCV {
     param (
@@ -92,18 +92,18 @@ Start-Process "URL_PATH_TO_CISCO_ISE"
 }
 
 
-# Funkcja czyszcząca okno konsoli
+# clear the console windows
 Function Clear-Console {
     $console.Text = ""
 }
 
-# Tworzenie okna formularza
+# creating the window formula
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "Zarządzanie komputerem"
 $form.ClientSize = New-Object System.Drawing.Size(800, 400) # Zmiana szerokości i wysokości okna
 $form.StartPosition = "CenterScreen"
 
-# Dodanie okna konsoli
+# add console window
 $console = New-Object System.Windows.Forms.TextBox
 $console.Location = New-Object System.Drawing.Point(10, 220)
 $console.Size = New-Object System.Drawing.Size(780, 100)
@@ -112,20 +112,20 @@ $console.ScrollBars = "Vertical"
 $console.ReadOnly = $true
 $form.Controls.Add($console)
 
-# Tworzenie etykiety dla pola wprowadzania
+# label conture
 $label = New-Object System.Windows.Forms.Label
 $label.Location = New-Object System.Drawing.Point(10,20)
-$label.Size = New-Object System.Drawing.Size(180,20) # Zmiana szerokości etykiety
+$label.Size = New-Object System.Drawing.Size(180,20) 
 $label.Text = "Wprowadź nazwę komputera:"
 $form.Controls.Add($label)
 
-# Tworzenie pola wprowadzania
+# label input
 $textbox = New-Object System.Windows.Forms.TextBox
-$textbox.Location = New-Object System.Drawing.Point(200,20) # Przesunięcie pola wprowadzania
-$textbox.Size = New-Object System.Drawing.Size(180,20) # Zmiana szerokości pola wprowadzania
+$textbox.Location = New-Object System.Drawing.Point(200,20) 
+$textbox.Size = New-Object System.Drawing.Size(180,20) 
 $form.Controls.Add($textbox)
 
-# Tworzenie przycisku "Otwórz eksplorator"
+# open explorer button
 $explorerButton = New-Object System.Windows.Forms.Button
 $explorerButton.Location = New-Object System.Drawing.Point(10,70)
 $explorerButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -136,7 +136,7 @@ $explorerButton.Add_Click({
 })
 $form.Controls.Add($explorerButton)
 
-# Tworzenie przycisku "Zamknij Outlook"
+# close outlook button
 $outlookButton = New-Object System.Windows.Forms.Button
 $outlookButton.Location = New-Object System.Drawing.Point(200,70)
 $outlookButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -148,7 +148,7 @@ $outlookButton.Add_Click({
 })
 $form.Controls.Add($outlookButton)
 
-# Tworzenie przycisku "Restart komputera"
+# reset computer button
 $restartButton = New-Object System.Windows.Forms.Button
 $restartButton.Location = New-Object System.Drawing.Point(400,70)
 $restartButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -160,7 +160,7 @@ $restartButton.Add_Click({
 })
 $form.Controls.Add($restartButton)
 
-# Tworzenie przycisku "Testuj połączenie"
+# test connection button
 $testConnectionButton = New-Object System.Windows.Forms.Button
 $testConnectionButton.Location = New-Object System.Drawing.Point(600,70)
 $testConnectionButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -173,7 +173,7 @@ $testConnectionButton.Add_Click({
 $form.Controls.Add($testConnectionButton)
 
 
-# Tworzenie przycisku "RCV Connector"
+# rcv connectior button
 $testConnectionButton = New-Object System.Windows.Forms.Button
 $testConnectionButton.Location = New-Object System.Drawing.Point(400,140)
 $testConnectionButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -185,7 +185,7 @@ $testConnectionButton.Add_Click({
 })
 $form.Controls.Add($testConnectionButton)
 
-# Tworzenie przycisku "Cisco ISE"
+# cisco ise button
 $testConnectionButton = New-Object System.Windows.Forms.Button
 $testConnectionButton.Location = New-Object System.Drawing.Point(600,140)
 $testConnectionButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -197,7 +197,7 @@ $testConnectionButton.Add_Click({
 })
 $form.Controls.Add($testConnectionButton)
 
-# Tworzenie przycisku "Wyczyść konsolę"
+# clear console button
 $clearConsoleButton = New-Object System.Windows.Forms.Button
 $clearConsoleButton.Location = New-Object System.Drawing.Point(200,140)
 $clearConsoleButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -207,7 +207,7 @@ $clearConsoleButton.Add_Click({
 })
 $form.Controls.Add($clearConsoleButton)
 
-# Tworzenie przycisku "psexec"
+# PSEXEC button
 $testConnectionButton = New-Object System.Windows.Forms.Button
 $testConnectionButton.Location = New-Object System.Drawing.Point(10,140)
 $testConnectionButton.Size = New-Object System.Drawing.Size(150,60) 
@@ -218,6 +218,6 @@ $testConnectionButton.Add_Click({
 })
 $form.Controls.Add($testConnectionButton)
 
-# Uruchomienie formularza
+# execute
 $form.ShowDialog() | Out-Null
 

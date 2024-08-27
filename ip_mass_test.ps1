@@ -1,3 +1,6 @@
+<# Aplikacja okienkowa napisana z użyciem frameworków Windows.Forms oraz presentationFramework - aplikacja zaczytuje plik txt z nazwami hostów oddzielonych nową linijką i sprawdza dostępność hostów w sieci.
+Dodałem pasek postępu celem podniesienia swoich umiejętności. Po zakończeniu procesu wyświetlana jest lista w tabelce z hostami które pingują i które nie. #>
+
 # Importing modules
 ﻿Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName PresentationFramework

@@ -1,3 +1,5 @@
+# Generator qr sieci wifi
+
 import tkinter as tk
 from tkinter import messagebox
 import qrcode

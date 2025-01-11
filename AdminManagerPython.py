@@ -1,4 +1,4 @@
-<# same as AdminManager.ps but in python - added button for CMDB base#>
+''' same as AdminManager.ps but in python - added button for CMDB base '''
 
 import tkinter as tk
 from tkinter import messagebox, scrolledtext

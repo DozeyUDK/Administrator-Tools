@@ -1,5 +1,3 @@
-
-```markdown
 # Administrator-Tools
 
 A dump of small scripts I used in the past.  
